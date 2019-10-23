@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/paddle.gd" type="Script" id=1]
 [ext_resource path="res://Assets/paddle.png" type="Texture" id=2]
 [ext_resource path="res://Assets/ball.png" type="Texture" id=3]
+[ext_resource path="res://Assets/tile_gray.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 53.311, 12.2888 )
@@ -13,6 +14,9 @@ bounce = 1.0
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 12.018
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 32, 14 )
 
 [node name="World" type="Node"]
 
@@ -51,3 +55,15 @@ shape = SubResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall"]
 polygon = PoolVector2Array( 0, 640, 0, 0, 1024, 0, 1024, 640, 1088, 640, 1088, -64, -64, -64, -64, 640, 0, 640 )
+
+[node name="Tiles" type="Node" parent="."]
+
+[node name="Gray Tiles" type="Node" parent="Tiles"]
+
+[node name="Tile" type="StaticBody2D" parent="Tiles/Gray Tiles"]
+
+[node name="Sprite" type="Sprite" parent="Tiles/Gray Tiles/Tile"]
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Gray Tiles/Tile"]
+shape = SubResource( 4 )
